@@ -29,7 +29,7 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
     e.preventDefault()
 
     const firstName = document.querySelector("#firstName").value;
-    const email = document.querySelector("#email").value;
+    const email = document.querySelector("#emailAddress").value;
     const country = document.querySelector("#country").value;
 
     if (firstName == "" || email == "" || country == "") {
