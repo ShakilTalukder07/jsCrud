@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =======link css====== -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- =====link bootstrap======= -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>ToDo App</title>
+</head>
+
+<body style="color:aliceblue; background-color: #1d2630">
+
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-5 mb-5"> ToDo App</h1>
+        </div>
+        <div class="main row justify-content-center">
+            <form action="" id="student-form" class="row justify-content-center mb-4 autocomplete">
+                <div class="col-md-8 col-10 mb-3">
+                    <label for="firstName">First Name</label>
+                    <input class="form-control" id="firstname" type="text" placeholder="Enter First Name" type="text">
+                </div>
+                <div class="col-md-8 col-10 mb-3">
+                    <label for="Email">Email</label>
+                    <input class="form-control" id="emailaddress" type="email" placeholder="Enter Email" type="text">
+                </div>
+                <div class="col-md-8 col-10 mb-3">
+                    <label for="Country">Country</label>
+                    <input class="form-control" id="country" type="text" placeholder="Enter Country" type="text">
+                </div>
+                <div class="col-10 col-md-8">
+                    <input class="btn btn-success add-btn" value="submit" type="text" type="submit">
+                </div>
+            </form>
+            <div class="col-10 col-md-8 mt-5">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="student-list">
+                        <tr>
+                            <td>Dear</td>
+                            <td>Programmer</td>
+                            <td>25</td>
+                            <td>
+                                <a href="" class="btn- btn-warning btn-sm edit">Edit</a>
+                                <a href="" class="btn- btn-danger btn-sm delete">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="./index.js"></script>
+
+</html>
