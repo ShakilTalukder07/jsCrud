@@ -53,8 +53,28 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
             selectedRow == null;
             showAlert ("Student add", "Success")
         }
+        else{
+            selectedRow.children[0].textContent = firstName;
+            selectedRow.children[1].textContent = email;
+            selectedRow.children[2].textContent = country;
+            selectedRow = null;
+            showAlert("Student Info Edited", "info");
+        }
+        clearFields();
     }
-})
+});
+
+// Edit data 
+
+document.querySelector("#student-list").addEventListener("click", (e) =>{
+    target = e.target;
+    if(target.classList.contains("edit")){
+        selectedRow = target.parentElement.parentElement;
+        document.querySelector("#firstName").value = selectedRow.children[0].textContent;
+        document.querySelector("#emailAddress").value = selectedRow.children[1].textContent;
+        document.querySelector("#country").value = selectedRow.children[2].textContent;
+    }
+});
 
 // Delete Data
 
