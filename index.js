@@ -21,6 +21,12 @@ function clearFields() {
     document.querySelector("#firstName").value = "";
     document.querySelector("#emailAddress").value = "";
     document.querySelector("#country").value = "";
+
+    // ===================================================
+
+    document.querySelector("#dateOfBirth").value = "";
+    document.querySelector("#gender").value = "";
+    document.querySelector("#hobby").value = "";
 }
 
 // add data 
@@ -32,7 +38,13 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
     const email = document.querySelector("#emailAddress").value;
     const country = document.querySelector("#country").value;
 
-    if (firstName == "" || email == "" || country == "") {
+    // ==============================================================
+
+    const dateOfBirth = document.querySelector("#dateOfBirth").value;
+    const gender = document.querySelector("#gender").value;
+    const hobby = document.querySelector("#hobby").value;
+
+    if (firstName == "" || email == "" || country == "" || dateOfBirth == "" || gender == "" || hobby == "") {
         showAlert("Please fill all the data fields")
     }
     else {
@@ -44,6 +56,9 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
             <td>${firstName}</td>
             <td>${email}</td>
             <td>${country}</td>
+            <td>${dateOfBirth}</td>
+            <td>${gender}</td>
+            <td>${hobby}</td>
             <td>
             <a href="#" class="btn- btn-warning btn-sm edit">Edit</a>
             <a href="#" class="btn- btn-danger btn-sm delete">Delete</a>
@@ -51,12 +66,18 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
             `;
             list.appendChild(row);
             selectedRow == null;
-            showAlert ("Student add", "Success")
+            showAlert("Student add", "Success")
         }
-        else{
+        else {
             selectedRow.children[0].textContent = firstName;
             selectedRow.children[1].textContent = email;
             selectedRow.children[2].textContent = country;
+
+            // ==============================================
+
+            selectedRow.children[3].textContent = dateOfBirth;
+            selectedRow.children[4].textContent = gender;
+            selectedRow.children[5].textContent = hobby;
             selectedRow = null;
             showAlert("Student Info Edited", "info");
         }
@@ -66,13 +87,19 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
 
 // Edit data 
 
-document.querySelector("#student-list").addEventListener("click", (e) =>{
+document.querySelector("#student-list").addEventListener("click", (e) => {
     target = e.target;
-    if(target.classList.contains("edit")){
+    if (target.classList.contains("edit")) {
         selectedRow = target.parentElement.parentElement;
         document.querySelector("#firstName").value = selectedRow.children[0].textContent;
         document.querySelector("#emailAddress").value = selectedRow.children[1].textContent;
         document.querySelector("#country").value = selectedRow.children[2].textContent;
+
+        // =====================================================================
+
+        document.querySelector("#dateOfBirth").value = selectedRow.children[3].textContent;
+        document.querySelector("#gender").value = selectedRow.children[4].textContent;
+        document.querySelector("#hobby").value = selectedRow.children[5].textContent;
     }
 });
 
