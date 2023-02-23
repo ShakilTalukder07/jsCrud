@@ -18,13 +18,12 @@ function showAlert(message, className) {
 function clearFields() {
     document.querySelector("#firstName").value = "";
     document.querySelector("#emailAddress").value = "";
-    // document.querySelector("#country").value = "";
-
-    // ===================================================
-
     document.querySelector("#dateOfBirth").value = "";
     document.querySelector("#gender").value = "";
     document.querySelector("#hobby").value = "";
+    document.querySelector("#countryList").value = "";
+    document.querySelector("#stateList").value = "";
+    document.querySelector("#cityList").value = "";
 }
 
 // select county state and city
