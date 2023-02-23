@@ -1,3 +1,34 @@
+let selectedRow = null;
+
+// show alerts
+
+function showAlert(message, className) {
+    const div = document.createElement("div");
+    div.className = `alert alert-${className}`;
+
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector(".container")
+    const main = document.querySelector(".main");
+    container.insertBefore(div, main)
+
+    setTimeout(() => document.querySelector(".alert").remove(), 3000);
+}
+
+// clear all field 
+function clearFields() {
+    document.querySelector("#firstName").value = "";
+    document.querySelector("#emailAddress").value = "";
+    // document.querySelector("#country").value = "";
+
+    // ===================================================
+
+    document.querySelector("#dateOfBirth").value = "";
+    document.querySelector("#gender").value = "";
+    document.querySelector("#hobby").value = "";
+}
+
+// select county state and city
+
 var worldData = {
     USA: {
         California: ["Los Angeles", "San Diego", "Sacramento"],
@@ -46,38 +77,6 @@ window.onload = function () {
 };
 
 
-
-// =================================================================
-
-let selectedRow = null;
-
-// show alerts
-
-function showAlert(message, className) {
-    const div = document.createElement("div");
-    div.className = `alert alert-${className}`;
-
-    div.appendChild(document.createTextNode(message));
-    const container = document.querySelector(".container")
-    const main = document.querySelector(".main");
-    container.insertBefore(div, main)
-
-    setTimeout(() => document.querySelector(".alert").remove(), 3000);
-}
-
-// clear all field 
-function clearFields() {
-    document.querySelector("#firstName").value = "";
-    document.querySelector("#emailAddress").value = "";
-    // document.querySelector("#country").value = "";
-
-    // ===================================================
-
-    document.querySelector("#dateOfBirth").value = "";
-    document.querySelector("#gender").value = "";
-    document.querySelector("#hobby").value = "";
-}
-
 // add data 
 
 document.querySelector('#student-form').addEventListener("submit", (e) => {
@@ -85,20 +84,14 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
 
     const firstName = document.querySelector("#firstName").value;
     const email = document.querySelector("#emailAddress").value;
-    // const country = document.querySelector("#country").value;
-
-    // ==============================================================
-
     const dateOfBirth = document.querySelector("#dateOfBirth").value;
     const gender = document.querySelector("#gender").value;
     const hobby = document.querySelector("#hobby").value;
-
-    // =======================================================
     const countryList = document.querySelector("#countyList").value;
     const stateList = document.querySelector("#stateList").value;
     const cityList = document.querySelector("#cityList").value;
 
-    if (firstName == "" || email == "" ||  dateOfBirth == "" || gender == "" || hobby == "") {
+    if (firstName == "" || email == "" || dateOfBirth == "" || gender == "" || hobby == "" || countryList == "" || stateList == "" || cityList == "") {
         showAlert("Please fill all the data fields")
     }
     else {
@@ -127,16 +120,9 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
         else {
             selectedRow.children[0].textContent = firstName;
             selectedRow.children[1].textContent = email;
-            // selectedRow.children[2].textContent = countryList;
-
-            // ==============================================
-
             selectedRow.children[2].textContent = dateOfBirth;
             selectedRow.children[3].textContent = gender;
             selectedRow.children[4].textContent = hobby;
-
-            // ===============================================
-
             selectedRow.children[5].textContent = countryList;
             selectedRow.children[6].textContent = stateList;
             selectedRow.children[7].textContent = cityList;
@@ -156,13 +142,12 @@ document.querySelector("#student-list").addEventListener("click", (e) => {
         selectedRow = target.parentElement.parentElement;
         document.querySelector("#firstName").value = selectedRow.children[0].textContent;
         document.querySelector("#emailAddress").value = selectedRow.children[1].textContent;
-        // document.querySelector("#country").value = selectedRow.children[2].textContent;
-
-        // =====================================================================
-
-        document.querySelector("#dateOfBirth").value = selectedRow.children[3].textContent;
-        document.querySelector("#gender").value = selectedRow.children[4].textContent;
-        document.querySelector("#hobby").value = selectedRow.children[5].textContent;
+        document.querySelector("#dateOfBirth").value = selectedRow.children[2].textContent;
+        document.querySelector("#gender").value = selectedRow.children[3].textContent;
+        document.querySelector("#hobby").value = selectedRow.children[4].textContent;
+        document.querySelector("#countryList").value = selectedRow.children[5].textContent;
+        document.querySelector("#stateList").value = selectedRow.children[6].textContent;
+        document.querySelector("#cityList").value = selectedRow.children[7].textContent;
     }
 });
 
