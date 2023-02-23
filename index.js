@@ -1,4 +1,53 @@
-// alert()
+var worldData = {
+    USA: {
+        California: ["Los Angeles", "San Diego", "Sacramento"],
+        Texas: ["Houston", "Austin"],
+        Florida: ["Miami", "Orlando", "Tampa"],
+    },
+    India: {
+        Maharashtra: ["Mumbai", "Pune", "Nagpur"],
+        TamilNadu: ["Chennai", "Madurai"],
+        Karnataka: ["Bangalore", "Mangalore"],
+    },
+    Canada: {
+        Alberta: ["Calgary", "Edmonton", "Red Deer"],
+        BritishColumbia: ["Vancouver", "Kelowna"],
+        Manitoba: ["Winnipeg", "Brandon"],
+    },
+    Germany: {
+        Bavaria: ["Munich", "Nuremberg"],
+        NorthRhine: ["Cologne", "Düsseldorf"],
+    },
+};
+window.onload = function () {
+    var countyList = document.getElementById("countyList"),
+        stateList = document.getElementById("stateList"),
+        cityList = document.getElementById("cityList");
+    for (var country in worldData) {
+        countyList.options[countyList.options.length] = new Option(country, country);
+    }
+    countyList.onchange = function () {
+        stateList.length = 1;
+        cityList.length = 1;
+        if (this.selectedIndex < 1) return;
+        for (var state in worldData[this.value]) {
+            stateList.options[stateList.options.length] = new Option(state, state);
+        }
+    };
+    countyList.onchange();
+    stateList.onchange = function () {
+        cityList.length = 1;
+        if (this.selectedIndex < 1) return;
+        var city = worldData[countyList.value][this.value];
+        for (var i = 0; i < city.length; i++) {
+            cityList.options[cityList.options.length] = new Option(city[i], city[i]);
+        }
+    };
+};
+
+
+
+// =================================================================
 
 let selectedRow = null;
 
@@ -20,7 +69,7 @@ function showAlert(message, className) {
 function clearFields() {
     document.querySelector("#firstName").value = "";
     document.querySelector("#emailAddress").value = "";
-    document.querySelector("#country").value = "";
+    // document.querySelector("#country").value = "";
 
     // ===================================================
 
@@ -36,7 +85,7 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
 
     const firstName = document.querySelector("#firstName").value;
     const email = document.querySelector("#emailAddress").value;
-    const country = document.querySelector("#country").value;
+    // const country = document.querySelector("#country").value;
 
     // ==============================================================
 
@@ -44,7 +93,12 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
     const gender = document.querySelector("#gender").value;
     const hobby = document.querySelector("#hobby").value;
 
-    if (firstName == "" || email == "" || country == "" || dateOfBirth == "" || gender == "" || hobby == "") {
+    // =======================================================
+    const countryList = document.querySelector("#countyList").value;
+    const stateList = document.querySelector("#stateList").value;
+    const cityList = document.querySelector("#cityList").value;
+
+    if (firstName == "" || email == "" ||  dateOfBirth == "" || gender == "" || hobby == "") {
         showAlert("Please fill all the data fields")
     }
     else {
@@ -55,10 +109,12 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
             row.innerHTML = `
             <td>${firstName}</td>
             <td>${email}</td>
-            <td>${country}</td>
             <td>${dateOfBirth}</td>
             <td>${gender}</td>
             <td>${hobby}</td>
+            <td>${countryList}</td>
+            <td>${stateList}</td>
+            <td>${cityList}</td>
             <td>
             <a href="#" class="btn- btn-warning btn-sm edit">Edit</a>
             <a href="#" class="btn- btn-danger btn-sm delete">Delete</a>
@@ -71,13 +127,20 @@ document.querySelector('#student-form').addEventListener("submit", (e) => {
         else {
             selectedRow.children[0].textContent = firstName;
             selectedRow.children[1].textContent = email;
-            selectedRow.children[2].textContent = country;
+            // selectedRow.children[2].textContent = countryList;
 
             // ==============================================
 
-            selectedRow.children[3].textContent = dateOfBirth;
-            selectedRow.children[4].textContent = gender;
-            selectedRow.children[5].textContent = hobby;
+            selectedRow.children[2].textContent = dateOfBirth;
+            selectedRow.children[3].textContent = gender;
+            selectedRow.children[4].textContent = hobby;
+
+            // ===============================================
+
+            selectedRow.children[5].textContent = countryList;
+            selectedRow.children[6].textContent = stateList;
+            selectedRow.children[7].textContent = cityList;
+
             selectedRow = null;
             showAlert("Student Info Edited", "info");
         }
@@ -93,7 +156,7 @@ document.querySelector("#student-list").addEventListener("click", (e) => {
         selectedRow = target.parentElement.parentElement;
         document.querySelector("#firstName").value = selectedRow.children[0].textContent;
         document.querySelector("#emailAddress").value = selectedRow.children[1].textContent;
-        document.querySelector("#country").value = selectedRow.children[2].textContent;
+        // document.querySelector("#country").value = selectedRow.children[2].textContent;
 
         // =====================================================================
 

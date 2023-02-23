@@ -50,13 +50,30 @@
                         <label for="Hobby">Hobby</label>
                         <input class="form-control" id="hobby" type="text" placeholder="Your Hobby">
                     </div>
-
-                    <!-- ========================================== -->
-                    <div class="col-md-4 col-5 mb-3">
-                        <label for="Country">Country</label>
-                        <input class="form-control" id="country" type="text" placeholder="Enter Country" type="text">
+                    <div class="lists">
+                        <label>Select Country:</label>
+                        <select name="country" id="countyList">
+                            <option value="" selected="selected">Select Country</option>
+                        </select>
                     </div>
                 </div>
+
+                <div class="d-flex gap-4 justify-content-center">
+                    <div class="lists">
+                        <label>Select State:</label>
+                        <select name="state" id="stateList">
+                            <option value="" selected="selected">Select State</option>
+                        </select>
+                    </div>
+                    <div class="lists">
+                        <label>Select City:</label>
+                        <select name="city" id="cityList">
+                            <option value="" selected="selected">Select City</option>
+                        </select>
+                    </div>
+                </div>
+
+
                 <div class="col-10 col-md-8">
                     <input class="btn btn-success add-btn" value="submit" type="submit">
                 </div>
@@ -67,10 +84,12 @@
                         <tr>
                             <th>First Name</th>
                             <th>Email</th>
-                            <th>Country</th>
                             <th>Date Of Birth</th>
                             <th>Gender</th>
                             <th>Hobby</th>
+                            <th>Country</th>
+                            <th>State</th>
+                            <th>City</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -78,10 +97,12 @@
                         <tr>
                             <td>Dear</td>
                             <td>Rohim@gmail.com</td>
-                            <td>India</td>
                             <td>2023-02-10</td>
                             <td>Male</td>
                             <td>Programming</td>
+                            <td>USA</td>
+                            <td>California</td>
+                            <td>Los Angeles</td>
                             <td>
                                 <a href="#" class="btn- btn-warning btn-sm edit">Edit</a>
                                 <a href="#" class="btn- btn-danger btn-sm delete">Delete</a>
